@@ -19,6 +19,8 @@
 
 body {
   color: var(--primary);
+  background: var(--tertiary);
+  overflow: hidden;
 }
 
 .header {
@@ -58,10 +60,23 @@ body {
   background: url(../images/background.jpg) no-repeat;
   background-size: cover;
   background-position: center;
+  pointer-events: auto;
+}
+
+.main.active {
+  filter: blur(15px);
+  pointer-events: none;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 200%;
 }
 
 .home {
-  height: 100vh;
+  position: relative;
+  left: -50%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -106,4 +121,94 @@ body {
 .home-content .start-btn:hover {
   background: var(--tertiary);
   box-shadow: none;
+}
+
+.popup-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 500px;
+  background: var(--primary);
+  border-radius: 6px;
+  padding: 10px 25px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.popup-info.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-info h2 {
+  font-size: 50px;
+  color: var(--secondary);
+}
+.popup-info .info {
+  display: inline-block;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  margin: 4px 0;
+}
+
+.popup-info .btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #999;
+  margin-top: 10px;
+  padding: 15px 0 7px;
+}
+
+.popup-info .btn-group .info-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 45px;
+  background: var(--secondary);
+  border: 2px solid var(--secondary);
+  outline: none;
+  border-radius: 6px;
+  font-size: 16px;
+  color: var(--primary);
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.popup-info .btn-group .info-btn:nth-child(1) {
+  background: transparent;
+  color: var(--secondary);
+}
+
+.popup-info .btn-group .info-btn:nth-child(1):hover {
+  background: var(--secondary);
+  color: var(--primary);
+}
+
+.popup-info .btn-group .info-btn:nth-child(2):hover {
+  background: #950170;
+  border-color: #950170;
+}
+
+.quiz-section {
+  position: relative;
+  /* left: -50%; */
+  left: 0;
+  width: 100%;
+  background: var(--tertiary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  transition: 0.8s ease-in-out;
+  transition-delay: 0.25s;
+}
+
+.quiz-section.active {
+  left: 0;
 }
