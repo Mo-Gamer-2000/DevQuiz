@@ -199,6 +199,8 @@ body {
 
 .quiz-section {
   position: relative;
+  /* left: -50%; */
+  left: 0;
   width: 100%;
   background: var(--tertiary);
   display: flex;
@@ -222,6 +224,17 @@ body {
   display: flex;
   flex-direction: column;
   padding: 20px 30px;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+}
+
+.quiz-section .quiz-box.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+  transition: 1s ease;
+  transition-delay: 1s;
 }
 
 .quiz-box h1 {
@@ -277,6 +290,22 @@ body {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
+.option-list .option.correct {
+  background: var(--tertiary);
+  color: #00a63d;
+  border-color: #00a63d;
+}
+
+.option-list .option.incorrect {
+  background: var(--tertiary);
+  color: #a60045;
+  border-color: #a60045;
+}
+
+.option-list .option.disabled {
+  pointer-events: none;
+}
+
 .quiz-box .quiz-footer {
   display: flex;
   justify-content: space-between;
@@ -305,8 +334,15 @@ body {
   pointer-events: none;
 }
 
-.quiz-footer .next-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.4);
+.quiz-footer .next-btn.active {
+  pointer-events: auto;
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #fff;
 }
+
+.quiz-footer .next-btn.active:hover {
+  background: #950170;
+  border-color: #950170;
+}
+
